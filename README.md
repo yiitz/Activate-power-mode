@@ -5,6 +5,6 @@ Notepad++ version of [activate-power-mode](https://github.com/JoelBesada/activat
 
 ## How To
 
-- Import the project into Visual studio and build.
-- Copy NppPluginTemplate_Debug.dll(forgive this) into NPP_HOME/plugins directory.
+- Open the Visual studio solution and build.
+- Copy bin/NppPluginTemplate.dll into NPP_HOME/plugins directory.
 - You will see 'Activate-power-mode' menu command in plugin menu,then activate by 'Toggle' sub command.
