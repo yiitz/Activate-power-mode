@@ -1,5 +1,5 @@
 #include "Particle.h"
-
+ 
 
 
 Particle::Particle():life(-1)
@@ -21,7 +21,7 @@ void Particle::update(int elapsed)
 
 	speedY += gravity * elapsed / 1000;
 }
-
+ 
 
 int Particle::getX()
 {
