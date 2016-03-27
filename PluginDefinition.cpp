@@ -17,7 +17,14 @@
 
 #include "PluginDefinition.h"
 #include "menuCmdID.h"
+#include <Shlwapi.h>
+#include <tchar.h>
 
+void initConfigPath();
+
+/* load and save properties from/into ini file */
+void loadSettings();
+void saveSettings();
 //
 // The plugin data that Notepad++ needs
 //
@@ -34,7 +41,6 @@ BOOL isActive;
 // It will be called while plugin loading   
 void pluginInit(HANDLE hModule)
 {
-	isActive = FALSE;
 }
 
 //
@@ -60,6 +66,8 @@ void commandMenuInit()
     //            ShortcutKey *shortcut,          // optional. Define a shortcut to trigger this command
     //            bool check0nInit                // optional. Make this menu item be checked visually
     //            );
+	initConfigPath();
+	loadSettings();
     setCommand(0, TEXT("Toggle"), toggle, NULL, false);
 }
 
@@ -69,6 +77,7 @@ void commandMenuInit()
 void commandMenuCleanUp()
 {
 	// Don't forget to deallocate your shortcut here
+	saveSettings();
 }
 
 
@@ -104,4 +113,33 @@ void toggle()
 	{
 		isActive = TRUE;
 	}
+}
+
+static TCHAR configPath[MAX_PATH];
+
+void initConfigPath()
+{
+	::SendMessage(nppData._nppHandle, NPPM_GETPLUGINSCONFIGDIR, MAX_PATH, (LPARAM)configPath);
+
+	if (PathFileExists(configPath) == FALSE) {
+		::CreateDirectory(configPath, NULL);
+	}
+
+	_tcscat(configPath, TEXT("\\activate_power_mode.ini"));
+	if (PathFileExists(configPath) == FALSE)
+	{
+		::CloseHandle(::CreateFile(configPath, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL));
+	}
+}
+
+#define SETTINGS_GROUP _T("com_yiitz_apm")
+#define KEY_ACTIVE _T("active")
+void loadSettings()
+{
+	isActive = ::GetPrivateProfileInt(SETTINGS_GROUP, KEY_ACTIVE, 1, configPath);
+}
+
+void saveSettings()
+{
+	::WritePrivateProfileString(SETTINGS_GROUP, KEY_ACTIVE, isActive?_T("1"):_T("0"), configPath);
 }
