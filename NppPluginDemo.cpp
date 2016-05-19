@@ -208,6 +208,11 @@ void updateParticles()
 	}
 }
 
+COLORREF currentColor(HWND hwnd)
+{
+  return SendMessage(hwnd, SCI_STYLEGETFORE, SendMessage(hwnd, SCI_GETSTYLEAT, SendMessage(hwnd, SCI_GETENDSTYLED, 0, 0)-1, 0), 0);
+}
+
 void CALLBACK boomTimerProc(HWND hwnd, UINT message, UINT iTimerID, DWORD dwTime)
 {
 	updateParticles();
@@ -239,7 +244,7 @@ void boom(HWND hwndFrom)
 		if (!temp->isAlive())
 		{
 			count += 1;
-			temp->reset(info.rcCaret.left, info.rcCaret.top, colors[rand() % (sizeof(colors) / sizeof(COLORREF))]);
+			temp->reset(info.rcCaret.left, info.rcCaret.top, currentColor(hwndFrom));
 		}
 	}
 	lastUpdateTick = GetTickCount();
