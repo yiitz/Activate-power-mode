@@ -1,10 +1,10 @@
 # Activate-power-mode
-Notepad++ version of [activate-power-mode](https://github.com/JoelBesada/activate-power-mode).I tried to get current edit text color from Scintilla Control but failed,any pull requests would be appreciated.
+Notepad++ version of [activate-power-mode](https://github.com/JoelBesada/activate-power-mode).
 
-![image](https://raw.githubusercontent.com/yiitz/Activate-power-mode/master/screenshot.gif)
+![image](./screenshot.gif)
 
 ## How To
 
 - Open the Visual studio solution and build.
 - Copy bin/NppPluginTemplate.dll into NPP_HOME/plugins directory.
-- You will see 'Activate-power-mode' menu command in plugin menu,then activate by 'Toggle' sub command.
+- You should see the 'Activate-power-mode' menu command in the plugin menu; activate it with the 'Toggle' sub command.
