@@ -29,7 +29,6 @@ extern BOOL isActive;
 #include "Particle.h"
 #define PARTICLE_COUNT 16
 Particle particles[PARTICLE_COUNT*4];
-COLORREF colors[] = { 0xDE935F,0xC5C8C6,0x81A2BE,0xB294BB, 0xCC6666 ,0xB5BD68 ,0x73EC0F ,0x8ABEB7 };
 BOOL isAllDead = TRUE;
 
 BOOL APIENTRY DllMain( HANDLE hModule, 
