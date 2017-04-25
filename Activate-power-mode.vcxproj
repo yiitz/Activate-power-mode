@@ -180,18 +180,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="NppPluginDemo.cpp" />
-    <ClCompile Include="Particle.cpp" />
-    <ClCompile Include="PluginDefinition.cpp" />
+    <ClCompile Include="src\NppPluginDemo.cpp" />
+    <ClCompile Include="src\Particle.cpp" />
+    <ClCompile Include="src\PluginDefinition.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DockingFeature\resource.h" />
-    <ClInclude Include="menuCmdID.h" />
-    <ClInclude Include="Notepad_plus_msgs.h" />
-    <ClInclude Include="Particle.h" />
-    <ClInclude Include="PluginDefinition.h" />
-    <ClInclude Include="PluginInterface.h" />
-    <ClInclude Include="Scintilla.h" />
+    <ClInclude Include="src\menuCmdID.h" />
+    <ClInclude Include="src\Notepad_plus_msgs.h" />
+    <ClInclude Include="src\Particle.h" />
+    <ClInclude Include="src\PluginDefinition.h" />
+    <ClInclude Include="src\PluginInterface.h" />
+    <ClInclude Include="src\Scintilla.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
