@@ -18,6 +18,7 @@
 #include "PluginDefinition.h"
 #include "menuCmdID.h"
 #include <Shlwapi.h>
+#define __STDC__ 1
 #include <tchar.h>
 
 void initConfigPath();
